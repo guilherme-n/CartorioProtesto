@@ -2,11 +2,16 @@ package JPA;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,6 +33,14 @@ public class Guia implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_RECEPCOES_GUIAS", joinColumns = {
+        @JoinColumn(name = "ID_GUIA")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "ID_RECEPCAO")})
+    private List<Recepcao> recepcoes;
+    
     
     public Long getId() {
         return id;

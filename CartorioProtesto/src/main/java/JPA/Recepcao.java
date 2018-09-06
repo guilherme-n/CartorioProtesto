@@ -2,11 +2,19 @@ package JPA;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,8 +34,23 @@ public class Recepcao implements Serializable{
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
-    private Titulo titulo;
+    @OneToMany(mappedBy = "recepcao", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Titulo> titulos;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_RECEPCOES_GUIAS", joinColumns = {
+        @JoinColumn(name = "ID_RECEPCAO")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "ID_GUIA")})
+    private List<Guia> guias;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "ID_CREDOR", referencedColumnName = "ID_CREDOR")
     private Credor credor;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "ID_DEVEDOR", referencedColumnName = "ID_DEVEDOR")
     private Devedor devedor;
     
     public Long getId() {

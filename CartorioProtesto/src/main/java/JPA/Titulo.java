@@ -3,9 +3,12 @@ package JPA;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,10 @@ public class Titulo implements Serializable{
     
     @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = true)
     private String valor;
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_TITULO", referencedColumnName = "ID_RECEPCAO", nullable = false)
+    private Recepcao recepcao;
     
     public Long getId() {
         return id;
