@@ -1,5 +1,6 @@
 package Test;
 
+import JPA.Devedor;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -13,6 +14,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class TesteGenerico {
 
@@ -59,12 +61,29 @@ public class TesteGenerico {
             fail(ex.getMessage());
         }
     }
+    
+    @Test
+    public void t01_InserirDevedor() {
+        Devedor devedor = null;
+        try {
+            devedor = new Devedor();
+            devedor.setId(15L);
+            devedor.setNome("Guilherme Ricardo 2");
+            devedor.setCpf("112.123.123-33");
+            
+            em.persist(devedor);
+            em.flush();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    protected Date getData(Integer dia, Integer mes, Integer ano) {
+    /*protected Date getData(Integer dia, Integer mes, Integer ano) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, ano);
         c.set(Calendar.MONTH, mes);
         c.set(Calendar.DAY_OF_MONTH, dia);
         return c.getTime();
-    }
+    }*/
 }

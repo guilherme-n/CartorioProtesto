@@ -54,6 +54,14 @@ public class Devedor implements Serializable{
         this.cpf = cpf;
     }
     
+    public Recepcao getRecepcao() {
+        return recepcao;
+    }
+
+    public void setRecepcao(Recepcao recepcao) {
+        this.recepcao = recepcao;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -63,7 +71,6 @@ public class Devedor implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Devedor)) {
             return false;
         }

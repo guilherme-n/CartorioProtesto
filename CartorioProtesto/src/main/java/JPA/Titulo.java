@@ -25,8 +25,8 @@ public class Titulo implements Serializable{
     @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = true)
     private String valor;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_TITULO", referencedColumnName = "ID_RECEPCAO", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_TITULO")
     private Recepcao recepcao;
     
     public Long getId() {
@@ -62,7 +62,6 @@ public class Titulo implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Titulo)) {
             return false;
         }

@@ -34,14 +34,6 @@ public class Guia implements Serializable{
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "TB_RECEPCOES_GUIAS", joinColumns = {
-        @JoinColumn(name = "ID_GUIA")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "ID_RECEPCAO")})
-    private List<Recepcao> recepcoes;
-    
-    
     public Long getId() {
         return id;
     }
@@ -83,7 +75,6 @@ public class Guia implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Guia)) {
             return false;
         }

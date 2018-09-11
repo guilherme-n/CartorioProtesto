@@ -34,15 +34,14 @@ public class Recepcao implements Serializable{
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
-    @OneToMany(mappedBy = "recepcao", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
+    //@OneToMany(mappedBy = "recepcao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "ID_TITULO")
     private List<Titulo> titulos;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "TB_RECEPCOES_GUIAS", joinColumns = {
-        @JoinColumn(name = "ID_RECEPCAO")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "ID_GUIA")})
+    //@ManyToMany
+    //@JoinTable(name="TB_RECEPCOES_GUIAS", joinColumns=
+    //{@JoinColumn(name="ID_RECEPCAO")}, inverseJoinColumns=
+     // {@JoinColumn(name="ID_GUIA")})
     private List<Guia> guias;
     
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
@@ -77,6 +76,30 @@ public class Recepcao implements Serializable{
         this.data = data;
     }
     
+    public Credor getCredor() {
+        return credor;
+    }
+
+    public void setCredor(Credor credor) {
+        this.credor = credor;
+    }
+    
+    public Devedor getDevedor() {
+        return devedor;
+    }
+
+    public void setDevedor(Devedor devedor) {
+        this.devedor = devedor;
+    }
+    
+    public List<Titulo> getTitulo() {
+        return titulos;
+    }
+
+    public void setTitulo(List<Titulo> titulos) {
+        this.titulos = titulos;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -86,7 +109,6 @@ public class Recepcao implements Serializable{
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Recepcao)) {
             return false;
         }
