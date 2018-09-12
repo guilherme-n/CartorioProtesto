@@ -9,11 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_DEVEDOR")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Devedor.PorNome",
+                    query = "SELECT d FROM Devedor d WHERE d.nome LIKE :nome ORDER BY d.id"
+            )
+        }
+)
 public class Devedor implements Serializable{
     @Id
     @Column(name = "ID_DEVEDOR")
