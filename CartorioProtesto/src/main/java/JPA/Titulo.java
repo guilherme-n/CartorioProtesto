@@ -16,13 +16,13 @@ import javax.persistence.Table;
 public class Titulo implements Serializable{
     @Id
     @Column(name = "ID_TITULO")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "TXT_NATUREZA", length = 100, nullable = false, unique = true)
+    @Column(name = "TXT_NATUREZA", length = 100, nullable = false, unique = false)
     private String natureza;
     
-    @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = true)
+    @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = false)
     private String valor;
     
     @ManyToOne(fetch = FetchType.LAZY)

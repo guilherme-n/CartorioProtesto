@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class Recepcao implements Serializable{
     @Id
     @Column(name = "ID_RECEPCAO")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "NUM_NUMERO", nullable = false)

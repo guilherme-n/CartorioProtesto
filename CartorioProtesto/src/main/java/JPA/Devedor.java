@@ -27,7 +27,7 @@ import javax.persistence.Table;
 public class Devedor implements Serializable{
     @Id
     @Column(name = "ID_DEVEDOR")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "TXT_NOME", length = 100, nullable = false, unique = true)

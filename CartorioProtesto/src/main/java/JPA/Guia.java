@@ -31,7 +31,7 @@ import javax.persistence.TemporalType;
 public class Guia implements Serializable{
     @Id
     @Column(name = "ID_GUIA")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "NUM_NUMERO", nullable = false)

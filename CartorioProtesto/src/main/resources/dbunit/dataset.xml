@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <!--TB_CREDOR id="5" nome="Fulano" cpf="112.123.123-33" telefone="99988-6565" email="fulano@gmail.com" />
-    <TB_CREDOR id="6" nome="Beltrano" cpf="332.321.321-11" telefone="98881-0001" email="beltrano@gmail.com" />
+    <TB_CREDOR txt_nome="Fulano Sauro" txt_cpf="445.456.456-66" txt_telefone="99988-6565" txt_email="fulano_sauro@gmail.com" />
+    <TB_CREDOR txt_nome="Beltrano Silva" txt_cpf="665.654.654-44" txt_telefone="98881-0001" txt_email="beltrano_silva@gmail.com" />
 
-    <TB_DEVEDOR id="5" nome="Joao" cpf="665.654.654-44" />
-    <TB_DEVEDOR id="6" nome="Paulo" cpf="998.987.987-77" />
+    <TB_DEVEDOR txt_nome="Joao" txt_cpf="778.789.789-99" />
+    <TB_DEVEDOR txt_nome="Paulo" txt_cpf="998.987.987-77" />
 
-    <TB_GUIA id="5" numero="20180001" data="09-02-2018 18:20:00" valor="73.20" />
-    <TB_GUIA id="6" numero="20180002" data="09-02-2018 18:25:00" valor="160.85" />
+    <TB_GUIA num_numero="20180001" dt_data="2018-09-02 18:20:00" num_valor="73.20" />
+    <TB_GUIA num_numero="20180002" dt_data="2018-09-02 18:25:00" num_valor="160.85" />
+    
+    <TB_RECEPCAO dt_data="2018-09-02 18:25:00" num_numero="2018001" id_credor="1" id_devedor = "1" />
+    <TB_RECEPCAO dt_data="2018-09-02 18:25:00" num_numero="2018002" id_credor="2" id_devedor = "2" />
 
-    <TB_TITULO id="5" natureza="Protesto de pessoa fisica" valor="1500.00" />
-    <TB_TITULO id="6" natureza="Protesto de pessoa fisica" valor="2700.00" /-->
+    <TB_TITULO txt_natureza="Protesto de pessoa fisica" num_valor="1500.00" id_recepcao="1" />
+    <TB_TITULO  txt_natureza="Protesto de pessoa fisica" num_valor="2700.00" id_recepcao="2" />
 </dataset>
