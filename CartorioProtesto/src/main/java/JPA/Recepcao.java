@@ -34,14 +34,14 @@ public class Recepcao implements Serializable{
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
-    //@OneToMany(mappedBy = "recepcao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "ID_TITULO")
+    @OneToMany(mappedBy = "recepcao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_RECEPCAO")
     private List<Titulo> titulos;
     
-    //@ManyToMany
-    //@JoinTable(name="TB_RECEPCOES_GUIAS", joinColumns=
-    //{@JoinColumn(name="ID_RECEPCAO")}, inverseJoinColumns=
-     // {@JoinColumn(name="ID_GUIA")})
+    @ManyToMany
+    @JoinTable(name="TB_RECEPCOES_GUIAS", joinColumns=
+    {@JoinColumn(name="ID_RECEPCAO")}, inverseJoinColumns=
+      {@JoinColumn(name="ID_GUIA")})
     private List<Guia> guias;
     
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
