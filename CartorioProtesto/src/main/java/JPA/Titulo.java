@@ -26,7 +26,7 @@ public class Titulo implements Serializable{
     private String valor;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_TITULO")
+    @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
     private Recepcao recepcao;
     
     public Long getId() {

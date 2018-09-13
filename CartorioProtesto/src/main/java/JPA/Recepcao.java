@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,6 +23,14 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_RECEPCAO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Recepcao.PorNumero",
+                    query = "SELECT r FROM Recepcao r WHERE r.numero = :numero ORDER BY r.id"
+            )
+        }
+)
 public class Recepcao implements Serializable{
     @Id
     @Column(name = "ID_RECEPCAO")
