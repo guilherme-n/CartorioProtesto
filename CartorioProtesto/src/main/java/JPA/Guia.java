@@ -2,7 +2,7 @@ package JPA;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,10 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +24,10 @@ import javax.persistence.TemporalType;
             @NamedQuery(
                     name = "Guia.PorNumero",
                     query = "SELECT g FROM Guia g WHERE g.numero LIKE :numero ORDER BY g.id"
+            ),
+            @NamedQuery(
+                    name = "Guia.PorRecepcao",
+                    query = "SELECT g FROM Guia g WHERE g.recepcao.id = :idRecepcao ORDER BY g.id"
             )
         }
 )
@@ -44,6 +47,10 @@ public class Guia implements Serializable{
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
+    private Recepcao recepcao;
+    
     public Long getId() {
         return id;
     }
@@ -54,6 +61,14 @@ public class Guia implements Serializable{
     
     public long getNumero() {
         return numero;
+    }
+
+    public Recepcao getRecepcao() {
+        return recepcao;
+    }
+
+    public void setRecepcao(Recepcao recepcao) {
+        this.recepcao = recepcao;
     }
 
     public void setNumero(long numero) {

@@ -1,17 +1,15 @@
 package JPA;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -42,9 +40,8 @@ public class Credor implements Serializable{
     @Column(name = "TXT_EMAIL", length = 40, nullable = false, unique = true)
     private String email;
     
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
-    @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
-    private Recepcao recepcao;
+    @ManyToMany(mappedBy = "credores")
+    private List<Recepcao> recepcoes;
     
     public Long getId() {
         return id;
@@ -84,14 +81,6 @@ public class Credor implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-    
-    public Recepcao getRecepcao() {
-        return recepcao;
-    }
-
-    public void setRecepcao(Recepcao recepcao) {
-        this.recepcao = recepcao;
     }
     
     @Override

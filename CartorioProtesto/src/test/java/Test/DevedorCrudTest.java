@@ -12,52 +12,54 @@ import org.junit.runners.MethodSorters;
 public class DevedorCrudTest extends TesteGenerico {
 
     @Test
-    public void e1persistirDevedor() {
+    public void persistirDevedor() {
         logger.info("Executando persistirDevedor()");
         Devedor devedor = new Devedor();
-        devedor.setNome("Beltrano");
-        devedor.setCpf("447.859.659-89");
+        devedor.setNome("Geraldo Merenda");
+        devedor.setCpf("750.398.390-65");
         em.persist(devedor);
         em.flush();
         assertNotNull(devedor.getId());
     }
     
     @Test
-    public void e2atualizarDevedor(){
+    public void atualizarDevedor(){
         logger.info("Executando persistirDevedor()");
         TypedQuery<Devedor> query = em.createNamedQuery("Devedor.PorNome", Devedor.class);
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
-        query.setParameter("nome", "Beltrano");
+        query.setParameter("nome", "Schergio Mhelloh");
         Devedor devedor = query.getSingleResult();
         assertNotNull(devedor);
-        devedor.setNome("Fulano");
+        devedor.setNome("Schergio Mhelloh Sylvah");
         em.flush();
         assertEquals(0, query.getResultList().size());
-        query.setParameter("nome", "Fulano");
+        query.setParameter("nome", "Schergio Mhelloh Sylvah");
         devedor = query.getSingleResult();
         assertNotNull(devedor);
     }
     
     @Test
-    public void e3atualizarDevedorMerge(){
+    public void atualizarDevedorMerge(){
         logger.info("Executando atualizarDevedorMerge()");
         TypedQuery<Devedor> query = em.createNamedQuery("Devedor.PorNome", Devedor.class);
         query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
-        query.setParameter("nome", "Fulano");
+        query.setParameter("nome", "Michele Castelo Branco");
         Devedor devedor = query.getSingleResult();
         assertNotNull(devedor);
-        devedor.setNome("Fulano de Tal");
+        devedor.setNome("Michele Castelo Azul");
         em.clear();        
         em.merge(devedor);
         em.flush();
-        assertEquals(0, query.getResultList().size());
+        query.setParameter("nome", "Michele Castelo Azul");
+        devedor = query.getSingleResult();
+        assertNotNull(devedor);
     }
     
     @Test
-    public void e4removerDevedor() {
+    public void removerDevedor() {
         logger.info("Executando removerDevedor()");
         TypedQuery<Devedor> query = em.createNamedQuery("Devedor.PorNome", Devedor.class);
-        query.setParameter("nome", "Fulano de Tal");
+        query.setParameter("nome", "Guilherme Boulos");
         Devedor devedor = query.getSingleResult();
         assertNotNull(devedor);
         em.remove(devedor);

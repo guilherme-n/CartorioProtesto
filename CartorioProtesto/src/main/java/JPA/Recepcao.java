@@ -1,6 +1,7 @@
 package JPA;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -46,21 +47,22 @@ public class Recepcao implements Serializable{
     
     @OneToMany(mappedBy = "recepcao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_RECEPCAO")
-    private List<Titulo> titulos;
+    private List<Titulo> titulos = new ArrayList<>();
+    
+    @OneToOne(mappedBy = "recepcao", cascade = CascadeType.ALL, optional = false)
+    private Guia guia;  
+
+    @ManyToMany
+    @JoinTable(name="TB_RECEPCOES_CREDORES", joinColumns=
+    {@JoinColumn(name="ID_RECEPCAO")}, inverseJoinColumns=
+      {@JoinColumn(name="ID_CREDOR")})
+    private List<Credor> credores = new ArrayList<>();
     
     @ManyToMany
-    @JoinTable(name="TB_RECEPCOES_GUIAS", joinColumns=
+    @JoinTable(name="TB_RECEPCOES_DEVEDORES", joinColumns=
     {@JoinColumn(name="ID_RECEPCAO")}, inverseJoinColumns=
-      {@JoinColumn(name="ID_GUIA")})
-    private List<Guia> guias;
-    
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
-    @JoinColumn(name = "ID_CREDOR", referencedColumnName = "ID_CREDOR")
-    private Credor credor;
-    
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
-    @JoinColumn(name = "ID_DEVEDOR", referencedColumnName = "ID_DEVEDOR")
-    private Devedor devedor;
+      {@JoinColumn(name="ID_DEVEDOR")})
+    private List<Devedor> devedores = new ArrayList<>();
     
     public Long getId() {
         return id;
@@ -86,28 +88,22 @@ public class Recepcao implements Serializable{
         this.data = data;
     }
     
-    public Credor getCredor() {
-        return credor;
+    public Guia getGuia() {
+        return guia;
     }
 
-    public void setCredor(Credor credor) {
-        this.credor = credor;
+    public void setGuia(Guia guia) {
+        this.guia = guia;
     }
     
-    public Devedor getDevedor() {
-        return devedor;
-    }
-
-    public void setDevedor(Devedor devedor) {
-        this.devedor = devedor;
+    public void addTitulo(Titulo titulo) {
+        if (!this.titulos.contains(titulo)){
+            this.titulos.add(titulo);
+        }
     }
     
-    public List<Titulo> getTitulo() {
+    public List<Titulo> getTitulos() {
         return titulos;
-    }
-
-    public void setTitulo(List<Titulo> titulos) {
-        this.titulos = titulos;
     }
     
     @Override
@@ -127,6 +123,38 @@ public class Recepcao implements Serializable{
             return false;
         }
         return true;
+    }
+    
+    public List<Credor> getCredores() {
+        return this.credores;
+    }
+    
+    public void addCredor(Credor credor) {
+        if (!this.credores.contains(credor)) {
+            this.credores.add(credor);
+        }
+    }
+    
+    public void removeCredor(Credor credor){
+        if (!this.credores.contains(credor)){
+            this.credores.remove(credor);
+        }
+    }
+    
+    public List<Devedor> getDevedores() {
+        return this.devedores;
+    }
+    
+    public void addDevedor(Devedor devedor) {
+        if (!this.devedores.contains(devedor)) {
+            this.devedores.add(devedor);
+        }
+    }
+    
+    public void removeDevedor(Devedor devedor){
+        if (this.devedores.contains(devedor)){
+            this.devedores.remove(devedor);
+        }
     }
 
     @Override

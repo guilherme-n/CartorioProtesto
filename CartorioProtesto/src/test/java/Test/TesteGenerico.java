@@ -1,8 +1,6 @@
 package Test;
 
 import JPA.Devedor;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -62,23 +60,6 @@ public class TesteGenerico {
         }
     }
     
-    @Test
-    public void t01_InserirDevedor() {
-        Devedor devedor = null;
-        try {
-            devedor = new Devedor();
-            devedor.setId(15L);
-            devedor.setNome("Guilherme Ricardo 2");
-            devedor.setCpf("112.123.123-33");
-            
-            em.persist(devedor);
-            em.flush();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     /*protected Date getData(Integer dia, Integer mes, Integer ano) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, ano);

@@ -1,17 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <TB_CREDOR txt_nome="Fulano Sauro" txt_cpf="445.456.456-66" txt_telefone="99988-6565" txt_email="fulano_sauro@gmail.com" />
-    <TB_CREDOR txt_nome="Beltrano Silva" txt_cpf="665.654.654-44" txt_telefone="98881-0001" txt_email="beltrano_silva@gmail.com" />
-
-    <TB_DEVEDOR txt_nome="Joao" txt_cpf="778.789.789-99" />
-    <TB_DEVEDOR txt_nome="Paulo" txt_cpf="998.987.987-77" />
-
-    <TB_GUIA num_numero="20180001" dt_data="2018-09-02 18:20:00" num_valor="73.20" />
-    <TB_GUIA num_numero="20180002" dt_data="2018-09-02 18:25:00" num_valor="160.85" />
+    <!-- Teste Crud -->
+    <TB_CREDOR txt_nome="Ciro Gomes" txt_cpf="445.456.456-66" txt_telefone="99988-6565" txt_email="cirogomes@gmail.com" />
+    <TB_CREDOR txt_nome="Carmen Silva" txt_cpf="809.011.450-41" txt_telefone="98881-0001" txt_email="carmensilva@gmail.com" />
+    <TB_CREDOR txt_nome="Gildete de Souza" txt_cpf="542.087.590-03" txt_telefone="99988-4569" txt_email="gildetesouza@gmail.com" />
+    <TB_CREDOR txt_nome="Caio Fernandes" txt_cpf="351.952.090-73" txt_telefone="99988-3562" txt_email="caiofernandes@gmail.com" />
+    <TB_CREDOR txt_nome="Silvio Costa" txt_cpf="585.055.810-16" txt_telefone="99988-6525" txt_email="silviocosta@gmail.com" />
+    <TB_CREDOR txt_nome="Renata Vasconcelos" txt_cpf="523.533.150-89" txt_telefone="99988-4263" txt_email="renatavasconcelos@gmail.com" />
+    <TB_CREDOR txt_nome="Sara Gusmão" txt_cpf="980.236.300-67" txt_telefone="99988-5236" txt_email="saragusmao@gmail.com" />
+    <TB_CREDOR txt_nome="Vitor Saldanha" txt_cpf="678.680.210-98" txt_telefone="99988-2121" txt_email="vitorsaldanha@gmail.com" />
+    <TB_CREDOR txt_nome="João Amoedo" txt_cpf="686.117.640-05" txt_telefone="99988-5928" txt_email="joaoamoedo@gmail.com" />
+    <TB_CREDOR txt_nome="Luka Modrich" txt_cpf="846.160.530-65" txt_telefone="99988-2529" txt_email="lukamodrich@gmail.com" />
     
-    <TB_RECEPCAO dt_data="2018-09-02 18:25:00" num_numero="2018001" id_credor="1" id_devedor = "1" />
-    <TB_RECEPCAO dt_data="2018-09-02 18:25:00" num_numero="2018002" id_credor="2" id_devedor = "2" />
+    <TB_DEVEDOR txt_nome="Guilherme Boulos" txt_cpf="639.046.840-78" />
+    <TB_DEVEDOR txt_nome="Paulo Costa" txt_cpf="427.161.640-02" />
+    <TB_DEVEDOR txt_nome="Michele Castelo Branco" txt_cpf="172.040.800-92" />
+    <TB_DEVEDOR txt_nome="Filomena da Silva" txt_cpf="489.908.690-30" />
+    <TB_DEVEDOR txt_nome="Vinicius Falcao" txt_cpf="960.977.900-07" />
+    <TB_DEVEDOR txt_nome="Gilberto Junior" txt_cpf="650.276.750-89" />
+    <TB_DEVEDOR txt_nome="Edmilson Vasconcelos" txt_cpf="431.329.180-67" />
+    <TB_DEVEDOR txt_nome="Jesiel Silva" txt_cpf="477.388.470-34" />
+    <TB_DEVEDOR txt_nome="Francisco Silva" txt_cpf="879.641.120-15" />
+    <TB_DEVEDOR txt_nome="Schergio Mhelloh" txt_cpf="819.580.630-96" />
+    
+    <TB_RECEPCAO dt_data="2018-07-23 18:45:00" num_numero="2018011"/>
+    <TB_RECEPCAO dt_data="2018-03-18 11:44:00" num_numero="2018001"/>
+    <TB_RECEPCAO dt_data="2018-04-05 14:25:00" num_numero="2018007"/>
+    <TB_RECEPCAO dt_data="2018-09-02 18:19:00" num_numero="2018022"/>
+    
+    <TB_RECEPCOES_CREDORES id_recepcao ="1" id_credor= "1" />
+    <TB_RECEPCOES_CREDORES id_recepcao ="2" id_credor= "10" />
+    <TB_RECEPCOES_CREDORES id_recepcao ="3" id_credor= "7" />
+    <TB_RECEPCOES_CREDORES id_recepcao ="4" id_credor= "2" />
+    
+    <TB_RECEPCOES_DEVEDORES id_recepcao="1" id_devedor= "6" />
+    <TB_RECEPCOES_DEVEDORES id_recepcao="2" id_devedor= "3" />
+    <TB_RECEPCOES_DEVEDORES id_recepcao="3" id_devedor= "8" />
+    <TB_RECEPCOES_DEVEDORES id_recepcao="4" id_devedor= "1" />   
+    
+    <TB_GUIA num_numero="20180001" dt_data="2018-07-23 18:45:00" num_valor="73.20" id_recepcao="1"/>
+    <TB_GUIA num_numero="20180002" dt_data="2018-03-18 11:44:00" num_valor="569.85" id_recepcao="2"/>
+    <TB_GUIA num_numero="20180003" dt_data="2018-04-05 14:25:00" num_valor="5789.14" id_recepcao="3"/>
+    <TB_GUIA num_numero="20180004" dt_data="2018-09-02 18:19:00" num_valor="214.56" id_recepcao="4"/>
 
     <TB_TITULO txt_natureza="Protesto de pessoa fisica" num_valor="1500.00" id_recepcao="1" />
-    <TB_TITULO  txt_natureza="Protesto de pessoa fisica" num_valor="2700.00" id_recepcao="2" />
+    <TB_TITULO txt_natureza="Protesto de pessoa Juridica" num_valor="2700.00" id_recepcao="2" />
+    <TB_TITULO txt_natureza="Protesto de pessoa fisica" num_valor="1974.98" id_recepcao="1" />
+    <TB_TITULO txt_natureza="Protesto de pessoa Juridica" num_valor="142548.56" id_recepcao="3" />
+    <TB_TITULO txt_natureza="Protesto de pessoa Fisica" num_valor="37800.00" id_recepcao="4" />
+    <TB_TITULO txt_natureza="Protesto de pessoa Juridica" num_valor="14589.00" id_recepcao="2" />
+    <TB_TITULO txt_natureza="Protesto de pessoa Fisica" num_valor="2014.00" id_recepcao="1" />
+    <TB_TITULO txt_natureza="Protesto de pessoa Juridica" num_valor="2113.00" id_recepcao="3" />
+    
+    <!-- Teste JPQL -->
+    
+    <!-- Credor -->
+    
+    <TB_CREDOR txt_nome="Kassimo Alves de Souza" txt_cpf="562.989.480-31" txt_telefone="99856-3695" txt_email="joaoalves@gmail.com" />
+    <TB_CREDOR txt_nome="Kassimo Cesar Francisco" txt_cpf="074.316.280-30" txt_telefone="98965-8659" txt_email="joaocesar@gmail.com" />
+    <TB_CREDOR txt_nome="Gerlane Lopes" txt_cpf="634.633.050-03" txt_telefone="99653-9856" txt_email="gerlanelopes@gmail.com" />
+    <TB_CREDOR txt_nome="Irah Caldeira" txt_cpf="435.185.900-81" txt_telefone="99658-6983" txt_email="irahcaldeira@gmail.com" />
+    <TB_CREDOR txt_nome="Mario Silva Filho" txt_cpf="549.101.390-01" txt_telefone="99416-2627" txt_email="mariofilho@gmail.com" />
+    <TB_CREDOR txt_nome="Michelangelo de Roma" txt_cpf="623.563.030-14" txt_telefone="99635-5869" txt_email="michelangelo@gmail.com" />
+    <TB_CREDOR txt_nome="Leonardo da Vinci" txt_cpf="835.838.000-36" txt_telefone="99658-6536" txt_email="leonardovinci@gmail.com" />
+    
+    <!-- Devedor -->    
+    
+    <TB_DEVEDOR txt_nome="Maria Fernanda Katai" txt_cpf="503.010.470-49" />
+    <TB_DEVEDOR txt_nome="Gilberto Gil" txt_cpf="690.370.550-36" />
+    <TB_DEVEDOR txt_nome="Caetano Veloso" txt_cpf="400.078.780-28" />
+    <TB_DEVEDOR txt_nome="Maria Bethania" txt_cpf="680.595.870-99" />
+    <TB_DEVEDOR txt_nome="Djavan Francisco" txt_cpf="920.917.660-03" />
+    <TB_DEVEDOR txt_nome="Junior Caldas" txt_cpf="488.637.950-88" />
+    <TB_DEVEDOR txt_nome="Pablo Vittar" txt_cpf="875.827.800-19" />
+    <TB_DEVEDOR txt_nome="Sandra de Sá" txt_cpf="028.659.390-49" />
+    <TB_DEVEDOR txt_nome="Francisco Buarque" txt_cpf="131.924.470-01" />
+    <TB_DEVEDOR txt_nome="Maria Cerqueira" txt_cpf="786.877.280-85" />
+    
 </dataset>

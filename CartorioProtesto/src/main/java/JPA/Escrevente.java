@@ -6,6 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "TB_ESCREVENTE")
@@ -23,6 +24,7 @@ public class Escrevente extends Usuario {
     private int cargaHorariaSemanal;
     
     @Column(name = "DATA_ADMISSAO", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataAdmissao;
 
     public double getSalario() {

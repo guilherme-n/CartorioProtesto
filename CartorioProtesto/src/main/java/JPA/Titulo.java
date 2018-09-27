@@ -9,10 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_TITULO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Titulo.PorRecepcao",
+                    query = "SELECT t FROM Titulo t WHERE t.recepcao.id = :idRecepcao ORDER BY t.id"
+            )
+        }
+)
 public class Titulo implements Serializable{
     @Id
     @Column(name = "ID_TITULO")
@@ -23,9 +33,9 @@ public class Titulo implements Serializable{
     private String natureza;
     
     @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = false)
-    private String valor;
+    private double valor;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
     private Recepcao recepcao;
     
@@ -45,11 +55,11 @@ public class Titulo implements Serializable{
         this.natureza = natureza;
     }
     
-    public String getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
     
