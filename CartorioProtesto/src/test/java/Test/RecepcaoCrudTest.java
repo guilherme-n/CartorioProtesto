@@ -55,7 +55,7 @@ public class RecepcaoCrudTest extends TesteGenerico {
         queryguia.setParameter("idRecepcao", recepcao.getId());
         querytitulo.setParameter("idRecepcao", recepcao.getId());
         assertEquals(1, queryguia.getResultList().size());
-        assertEquals(1, queryguia.getResultList().size());
+        assertEquals(1, querytitulo.getResultList().size());
         
     }
     
@@ -72,7 +72,7 @@ public class RecepcaoCrudTest extends TesteGenerico {
         recepcao.setData(data);
         em.flush();
         recepcao = queryrecepcao.getSingleResult();
-        assertEquals(recepcao.getData(), data);
+        assertEquals(data, recepcao.getData());
     }
     
     @Test
@@ -89,7 +89,7 @@ public class RecepcaoCrudTest extends TesteGenerico {
         em.merge(recepcao);
         em.flush();
         recepcao = queryrecepcao.getSingleResult();
-        assertEquals(recepcao.getData(), data);
+        assertEquals(data, recepcao.getData());
     }
     
     @Test

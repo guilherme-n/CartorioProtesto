@@ -6,10 +6,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CredorJpqlTets extends TesteGenerico {
 
     @Test
@@ -32,15 +29,11 @@ public class CredorJpqlTets extends TesteGenerico {
     public void credorPorCPF() {
         logger.info("Executando credorPorCPF()");
         TypedQuery<Credor> querycredor = em.createQuery(
-                "SELECT c FROM Credor c WHERE c.cpf LIKE :nome",
+                "SELECT c FROM Credor c WHERE c.cpf = :cpf",
                 Credor.class);
-        querycredor.setParameter("nome", "Kassimo%");
+        querycredor.setParameter("cpf", "562.989.480-31");
         List<Credor> credores = querycredor.getResultList();
 
-        credores.forEach((credor) -> {
-            assertTrue(credor.getNome().startsWith("Kassimo"));
-       });
-
-        assertEquals(2, credores.size());
+        assertEquals(1, credores.size());
     }
 }
