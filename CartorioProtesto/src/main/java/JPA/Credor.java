@@ -42,6 +42,10 @@ public class Credor implements Serializable{
     
     @ManyToMany(mappedBy = "credores")
     private List<Recepcao> recepcoes;
+
+    public List<Recepcao> getRecepcoes() {
+        return recepcoes;
+    }
     
     public Long getId() {
         return id;

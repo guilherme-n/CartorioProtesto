@@ -35,9 +35,17 @@ public class Titulo implements Serializable{
     @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = false)
     private double valor;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
     private Recepcao recepcao;
+
+    public void setRecepcao(Recepcao recepcao) {
+        this.recepcao = recepcao;
+    }
+
+    public Recepcao getRecepcao() {
+        return recepcao;
+    }
     
     public Long getId() {
         return id;

@@ -35,6 +35,7 @@ public class RecepcaoCrudTest extends TesteGenerico {
         Titulo titulo = new Titulo();
         titulo.setNatureza("Cheque");
         titulo.setValor(2548.56);
+        titulo.setRecepcao(recepcao);
         recepcao.addTitulo(titulo);
         querycredor.setParameter("nome", "Ciro Gomes");
         Credor credor = querycredor.getSingleResult();
