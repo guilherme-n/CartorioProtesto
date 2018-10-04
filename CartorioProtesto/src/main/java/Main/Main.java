@@ -31,8 +31,8 @@ public class Main {
         recepcao.setNumero(7);
         recepcao.setData(new Date(System.currentTimeMillis()));
         //devedor.setRecepcao(recepcao);
-        recepcao.setCredor(credor);
-        recepcao.setDevedor(devedor);
+        //recepcao.setCredor(credor);
+        //recepcao.setDevedor(devedor);
         
         //credor.setRecepcao(recepcao);
         

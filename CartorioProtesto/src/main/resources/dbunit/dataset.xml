@@ -64,6 +64,7 @@
     <TB_CREDOR txt_nome="Michelangelo de Roma" txt_cpf="623.563.030-14" txt_telefone="99635-5869" txt_email="michelangelo@gmail.com" />
     <TB_CREDOR txt_nome="Leonardo da Vinci" txt_cpf="835.838.000-36" txt_telefone="99658-6536" txt_email="leonardovinci@gmail.com" />
     
+    
     <!-- Devedor -->    
     
     <TB_DEVEDOR txt_nome="Maria Fernanda Katai" txt_cpf="503.010.470-49" />
@@ -76,5 +77,17 @@
     <TB_DEVEDOR txt_nome="Sandra de Sá" txt_cpf="028.659.390-49" />
     <TB_DEVEDOR txt_nome="Francisco Buarque" txt_cpf="131.924.470-01" />
     <TB_DEVEDOR txt_nome="Maria Cerqueira" txt_cpf="786.877.280-85" />
+    
+    
+    <!-- Guia -->    
+    
+    <TB_GUIA num_numero="20170001" dt_data="2017-10-23 18:45:00" num_valor="73.20"/>
+    <TB_GUIA num_numero="20170002" dt_data="2017-10-23 11:44:00" num_valor="569.85" />
+    <TB_GUIA num_numero="20170003" dt_data="2017-12-19 14:25:00" num_valor="5789.14" />
+    <TB_GUIA num_numero="20180014" dt_data="2018-01-02 18:19:00" num_valor="214.56" />
+    <TB_GUIA num_numero="20180015" dt_data="2018-01-23 18:45:00" num_valor="73.20"/>
+    <TB_GUIA num_numero="20180016" dt_data="2018-03-18 11:44:00" num_valor="569.85" />
+    <TB_GUIA num_numero="20180017" dt_data="2018-03-05 14:25:00" num_valor="5789.14" />
+    <TB_GUIA num_numero="20180018" dt_data="2018-03-02 18:19:00" num_valor="214.56" />
     
 </dataset>
