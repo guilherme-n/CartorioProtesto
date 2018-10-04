@@ -24,19 +24,19 @@
     <TB_DEVEDOR txt_nome="Schergio Mhelloh" txt_cpf="819.580.630-96" />
     
     <TB_RECEPCAO dt_data="2018-07-23 18:45:00" num_numero="2018011"/>
-    <TB_RECEPCAO dt_data="2018-03-18 11:44:00" num_numero="2018001"/>
+    <TB_RECEPCAO dt_data="2018-04-18 11:44:00" num_numero="2018001"/>
     <TB_RECEPCAO dt_data="2018-04-05 14:25:00" num_numero="2018007"/>
     <TB_RECEPCAO dt_data="2018-09-02 18:19:00" num_numero="2018022"/>
     
     <TB_RECEPCOES_CREDORES id_recepcao ="1" id_credor= "1" />
-    <TB_RECEPCOES_CREDORES id_recepcao ="2" id_credor= "10" />
+    <TB_RECEPCOES_CREDORES id_recepcao ="2" id_credor= "1" />
     <TB_RECEPCOES_CREDORES id_recepcao ="3" id_credor= "7" />
     <TB_RECEPCOES_CREDORES id_recepcao ="4" id_credor= "2" />
     
     <TB_RECEPCOES_DEVEDORES id_recepcao="1" id_devedor= "6" />
     <TB_RECEPCOES_DEVEDORES id_recepcao="2" id_devedor= "3" />
-    <TB_RECEPCOES_DEVEDORES id_recepcao="3" id_devedor= "8" />
-    <TB_RECEPCOES_DEVEDORES id_recepcao="4" id_devedor= "1" />   
+    <TB_RECEPCOES_DEVEDORES id_recepcao="3" id_devedor= "2" />
+    <TB_RECEPCOES_DEVEDORES id_recepcao="4" id_devedor= "2" />   
     
     <TB_GUIA num_numero="20180001" dt_data="2018-07-23 18:45:00" num_valor="73.20" id_recepcao="1"/>
     <TB_GUIA num_numero="20180002" dt_data="2018-03-18 11:44:00" num_valor="569.85" id_recepcao="2"/>

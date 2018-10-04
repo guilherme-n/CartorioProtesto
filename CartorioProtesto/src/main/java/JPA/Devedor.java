@@ -36,6 +36,10 @@ public class Devedor implements Serializable{
     
     @ManyToMany(mappedBy = "devedores")
     private List<Recepcao> recepcoes;
+
+    public List<Recepcao> getRecepcoes() {
+        return recepcoes;
+    }
     
     public Long getId() {
         return id;

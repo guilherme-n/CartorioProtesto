@@ -41,7 +41,7 @@ public class CredorJpqlTets extends TesteGenerico {
     }
     
     @Test
-    public void recepcaoPorCredor() {
+    public void recepcoesPorCredor() {
         logger.info("Executando recepcaoPorCredor()");
         TypedQuery<Credor> querycredor = em.createQuery(
                 "SELECT c FROM Credor c WHERE c.cpf = :cpf",

@@ -1,10 +1,8 @@
 package Test;
 
-import JPA.Credor;
 import JPA.Devedor;
 import static Test.TesteGenerico.logger;
 import java.util.List;
-import javax.persistence.CacheRetrieveMode;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,7 +16,7 @@ public class DevedorJpqlTest extends TesteGenerico {
     public void devedorPorNome() {
         logger.info("Executando credorPorNome()");
         TypedQuery<Devedor> querydevedor = em.createQuery(
-                "SELECT c FROM Devedor c WHERE c.nome LIKE :nome",
+                "SELECT d FROM Devedor d WHERE d.nome LIKE :nome",
                 Devedor.class);
         querydevedor.setParameter("nome", "%Maria%");
         List<Devedor> devedores = querydevedor.getResultList();
@@ -30,4 +28,28 @@ public class DevedorJpqlTest extends TesteGenerico {
         assertEquals(3, devedores.size());
     }
     
+    @Test
+    public void devedorPorCPF() {
+        logger.info("Executando devedorPorCPF()");
+        TypedQuery<Devedor> querydevedor = em.createQuery(
+                "SELECT d FROM Devedor d WHERE d.cpf = :cpf",
+                Devedor.class);
+        querydevedor.setParameter("cpf", "400.078.780-28");
+        List<Devedor> devedores = querydevedor.getResultList();
+
+        assertEquals(1, devedores.size());
+    }
+    
+    @Test
+    public void recepcoesPorDevedor() {
+        logger.info("Executando recepcoesPorDevedor()");
+        TypedQuery<Devedor> querydevedor = em.createQuery(
+                "SELECT d FROM Devedor d WHERE d.cpf = :cpf",
+                Devedor.class);
+        querydevedor.setParameter("cpf", "427.161.640-02");
+        List<Devedor> devedores = querydevedor.getResultList();
+        assertEquals(1, devedores.size());
+        
+        assertEquals(2, devedores.get(0).getRecepcoes().size());
+    }    
 }

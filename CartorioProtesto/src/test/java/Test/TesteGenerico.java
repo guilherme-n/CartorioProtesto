@@ -1,6 +1,5 @@
 package Test;
 
-import JPA.Devedor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -12,7 +11,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import static org.junit.Assert.*;
-import org.junit.Test;
 
 public class TesteGenerico {
 
