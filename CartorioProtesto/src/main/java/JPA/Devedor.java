@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "TB_DEVEDOR")
@@ -31,7 +33,9 @@ public class Devedor implements Serializable{
     @Column(name = "TXT_NOME", length = 100, nullable = false, unique = true)
     private String nome;
     
-    @Column(name = "TXT_CPF", length = 14, nullable = false, unique = true)
+    @NotBlank
+    @CPF
+    @Column(name = "TXT_CPF", nullable = false, unique = true)
     private String cpf;
     
     @ManyToMany(mappedBy = "devedores")

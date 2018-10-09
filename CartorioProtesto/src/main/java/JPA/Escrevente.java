@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.DecimalMin;
 
 @Entity
 @Table(name = "TB_ESCREVENTE")
@@ -14,6 +15,7 @@ import javax.persistence.Temporal;
 @PrimaryKeyJoinColumn(name="ID_USUARIO", referencedColumnName = "ID_USUARIO")
 public class Escrevente extends Usuario {
     
+    @DecimalMin("0.1")
     @Column(name = "NUM_SALARIO", nullable = false)
     private double salario;
     

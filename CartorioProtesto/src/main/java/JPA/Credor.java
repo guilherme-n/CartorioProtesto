@@ -11,6 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "TB_CREDOR")
@@ -28,15 +33,23 @@ public class Credor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotBlank
+    @Size(max = 30)
+    @Pattern(regexp = "\\p{Upper}{1}\\p{Lower}+", message = "{JPA.Credor.senha}")
     @Column(name = "TXT_NOME", length = 100, nullable = false, unique = true)
     private String nome;
     
-    @Column(name = "TXT_CPF", length = 14, nullable = false, unique = true)
+    @NotBlank
+    @CPF
+    @Column(name = "TXT_CPF")
     private String cpf;
     
     @Column(name = "TXT_TELEFONE", length = 10, nullable = false, unique = true)
     private String telefone;
     
+    @NotBlank
+    @Email
+    @Size(max = 30)
     @Column(name = "TXT_EMAIL", length = 40, nullable = false, unique = true)
     private String email;
     

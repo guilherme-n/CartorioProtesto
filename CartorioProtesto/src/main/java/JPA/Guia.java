@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "TB_GUIA")
@@ -40,6 +42,7 @@ public class Guia implements Serializable{
     @Column(name = "NUM_NUMERO", nullable = false)
     private long numero;
     
+    @DecimalMin("0.1")
     @Column(name = "NUM_VALOR", nullable = false)
     private double valor;
     
@@ -47,6 +50,7 @@ public class Guia implements Serializable{
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
+    @NotBlank
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
     private Recepcao recepcao;
