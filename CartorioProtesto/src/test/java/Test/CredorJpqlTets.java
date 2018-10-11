@@ -1,8 +1,10 @@
 package Test;
 
 import JPA.Credor;
+import JPA.CredorQtdRecepcao;
 import static Test.TesteGenerico.logger;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -30,11 +32,13 @@ public class CredorJpqlTets extends TesteGenerico {
     
     @Test
     public void credorPorCPF() {
-        logger.info("Executando credorPorCPF()");
-        TypedQuery<Credor> querycredor = em.createQuery(
-                "SELECT c FROM Credor c WHERE c.cpf = :cpf",
+        logger.info("Executando credorPorCPF()");        
+        TypedQuery<Credor> querycredor;
+        querycredor = em.createQuery(
+                "SELECT c FROM Credor c "
+                + "WHERE c.cpf =  ?1 ",
                 Credor.class);
-        querycredor.setParameter("cpf", "562.989.480-31");
+        querycredor.setParameter(1 , "562.989.480-31");
         List<Credor> credores = querycredor.getResultList();
 
         assertEquals(1, credores.size());
@@ -51,5 +55,17 @@ public class CredorJpqlTets extends TesteGenerico {
         assertEquals(1, credores.size());
         
         assertEquals(2, credores.get(0).getRecepcoes().size());
+    }
+    
+    @Test
+    public void credoresQtdRecepcoes() {
+        logger.info("Executando credoresComMaisRecepcoes()");
+        Query querycredor = em.createNamedQuery("quantidadeRecepcoes");
+        List<CredorQtdRecepcao> credores = querycredor.getResultList();        
+        assertEquals(9, credores.size());
+        assertEquals("Ciro Gomes", credores.get(0).getNome());
+        assertEquals(2, credores.get(0).getNumRecepcoes(), 0);
+        assertEquals("Sara Gusmão", credores.get(credores.size()-1).getNome());
+        assertEquals(1, credores.get(credores.size()-1).getNumRecepcoes(), 0);
     }
 }

@@ -29,7 +29,8 @@ import javax.persistence.TemporalType;
             @NamedQuery(
                     name = "Recepcao.PorNumero",
                     query = "SELECT r FROM Recepcao r WHERE r.numero = :numero ORDER BY r.id"
-            )
+            ) 
+                
         }
 )
 public class Recepcao implements Serializable{

@@ -3,6 +3,7 @@ package Test;
 import JPA.Devedor;
 import static Test.TesteGenerico.logger;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -51,5 +52,23 @@ public class DevedorJpqlTest extends TesteGenerico {
         assertEquals(1, devedores.size());
         
         assertEquals(2, devedores.get(0).getRecepcoes().size());
-    }    
+    }
+    
+    @Test
+    public void credoresQtdRecepcoesMaiorQue1() {
+        logger.info("Executando credoresComMaisRecepcoes()");
+        Query query = em.createQuery("SELECT d, COUNT(r) "
+                + "FROM Devedor d, Recepcao r "
+                + "WHERE "
+                + "r MEMBER OF d.recepcoes GROUP BY d HAVING COUNT(r) > ?1 ORDER BY COUNT(r) desc, d.nome");
+        query.setParameter(1, 1);
+        
+        List<Object[]> devedores = query.getResultList();
+        assertEquals(3, devedores.size());
+        assertEquals("Sandra de Sá", ((Devedor)devedores.get(0)[0]).getNome());
+        assertEquals(3, (long) (devedores.get(0)[1]), 0);
+        assertEquals("Paulo Costa", ((Devedor)devedores.get(devedores.size()-1)[0]).getNome());
+        assertEquals(2, (long) (devedores.get(devedores.size()-1)[1]), 0);
+    }
+    
 }

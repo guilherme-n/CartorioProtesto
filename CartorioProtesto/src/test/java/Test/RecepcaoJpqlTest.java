@@ -21,9 +21,7 @@ public class RecepcaoJpqlTest extends TesteGenerico {
     @Test
     public void recepcaoPorNumero() {
         logger.info("Executando recepcaoPorNumero()");
-        TypedQuery<Recepcao> queryrecepcao = em.createQuery(
-                "SELECT r FROM Recepcao r WHERE r.numero = :numero",
-                Recepcao.class);
+        TypedQuery<Recepcao> queryrecepcao = em.createNamedQuery("Recepcao.PorNumero", Recepcao.class);
         queryrecepcao.setParameter("numero", 2018011);
         List<Recepcao> recepcoes = queryrecepcao.getResultList();
         assertEquals(1, recepcoes.size());
@@ -42,7 +40,7 @@ public class RecepcaoJpqlTest extends TesteGenerico {
         queryrecepcao.setParameter("dataInicial", dataInicial);
         queryrecepcao.setParameter("dataFinal", dataFinal);
         List<Recepcao> recepcoes = queryrecepcao.getResultList();
-        assertEquals(2, recepcoes.size());
+        assertEquals(4, recepcoes.size());
     }
     
     @Test

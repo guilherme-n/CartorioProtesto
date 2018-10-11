@@ -3,13 +3,18 @@ package JPA;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -19,6 +24,19 @@ import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "TB_CREDOR")
+@SqlResultSetMapping(
+        name = "CredorQtdRecepcao",
+        classes = @ConstructorResult(
+                targetClass = CredorQtdRecepcao.class,
+                columns = {
+                    @ColumnResult(name = "id", type = Long.class),
+                    @ColumnResult(name = "nome"),
+                    @ColumnResult(name = "cpf"),
+                    @ColumnResult(name = "telefone"),
+                    @ColumnResult(name = "email"),
+                    @ColumnResult(name = "numRecepcoes", type = Long.class)}
+        )
+)
 @NamedQueries(
         {
             @NamedQuery(
@@ -27,6 +45,9 @@ import org.hibernate.validator.constraints.br.CPF;
             )
         }
 )
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "quantidadeRecepcoes", query = "SELECT c.ID_CREDOR as id, c.TXT_NOME as nome, c.TXT_CPF as cpf, c.TXT_TELEFONE as telefone, c.TXT_EMAIL as email, count(c.ID_CREDOR) as numRecepcoes FROM tb_credor c inner join  tb_recepcoes_credores rc on c.ID_CREDOR = rc.ID_CREDOR group by rc.ID_CREDOR order by numRecepcoes desc, nome", resultSetMapping = "CredorQtdRecepcao")
+})
 public class Credor implements Serializable{
     @Id
     @Column(name = "ID_CREDOR")
