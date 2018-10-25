@@ -88,6 +88,7 @@
     <!-- id = 10 --><TB_RECEPCAO dt_data="2018-04-19 11:44:00" num_numero="2018028"/>
     <!-- id = 11 --><TB_RECEPCAO dt_data="2018-01-20 14:25:00" num_numero="2018029"/>
     <!-- id = 12 --><TB_RECEPCAO dt_data="2018-10-16 18:19:00" num_numero="2018030"/>
+    <!-- id = 13 --><TB_RECEPCAO dt_data="2018-10-05 18:19:00" num_numero="2018045"/>
     
     <!-- Recepcao_credor -->
     
@@ -99,6 +100,7 @@
     <TB_RECEPCOES_CREDORES id_recepcao ="10" id_credor= "15" />
     <TB_RECEPCOES_CREDORES id_recepcao ="11" id_credor= "16" />
     <TB_RECEPCOES_CREDORES id_recepcao ="12" id_credor= "17" />
+     <TB_RECEPCOES_CREDORES id_recepcao ="13" id_credor= "17" />
     
     <!-- Recepcao_devedor -->
     
@@ -109,7 +111,8 @@
     <TB_RECEPCOES_DEVEDORES id_recepcao="9" id_devedor= "15" />
     <TB_RECEPCOES_DEVEDORES id_recepcao="10" id_devedor= "16" />
     <TB_RECEPCOES_DEVEDORES id_recepcao="11" id_devedor= "14" />
-    <TB_RECEPCOES_DEVEDORES id_recepcao="12" id_devedor= "18" />   
+    <TB_RECEPCOES_DEVEDORES id_recepcao="12" id_devedor= "18" /> 
+    <TB_RECEPCOES_DEVEDORES id_recepcao="13" id_devedor= "18" />  
     
     <!-- Guia -->    
     

@@ -13,7 +13,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -42,7 +41,7 @@ public class Titulo implements Serializable{
     @Column(name = "NUM_VALOR", length = 14, nullable = false, unique = false)
     private double valor;
     
-    @NotBlank
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
     private Recepcao recepcao;

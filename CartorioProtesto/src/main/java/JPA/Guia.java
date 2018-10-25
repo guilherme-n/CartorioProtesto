@@ -17,7 +17,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "TB_GUIA")
@@ -39,18 +43,20 @@ public class Guia implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotNull
     @Column(name = "NUM_NUMERO", nullable = false)
     private long numero;
     
-    @DecimalMin("0.1")
+    @DecimalMin("0.1")    
     @Column(name = "NUM_VALOR", nullable = false)
     private double valor;
     
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DT_DATA", nullable = false)
     private Date data;
     
-    @NotBlank
+    @NotNull
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_RECEPCAO", referencedColumnName = "ID_RECEPCAO")
     private Recepcao recepcao;

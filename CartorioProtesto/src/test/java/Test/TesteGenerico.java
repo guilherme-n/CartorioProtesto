@@ -40,8 +40,19 @@ public class TesteGenerico {
 
     @After
     public void tearDown() {
-        commitTransaction();
-        em.close();
+        try {
+            et.commit();
+        } catch (Exception ex) {
+            logger.log(Level.SEVERE, ex.getMessage());
+
+            if (et.isActive()) {
+                et.rollback();
+            }
+        } finally {
+            em.close();
+            em = null;
+            et = null;
+        }
     }
 
     private void beginTransaction() {

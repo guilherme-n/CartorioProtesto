@@ -11,8 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
+
 
 @Entity
 @Table(name = "TB_DEVEDOR")
@@ -30,11 +33,14 @@ public class Devedor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotBlank(message = "não pode estar vazio")
+    @Size(max = 100, message = "deve conter no maximo 100 caracteres")
+    @Pattern(regexp = "[A-Za-záàâãéèêíïóôõöúçÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9 ]*", message = "caracteres invalidos")
     @Column(name = "TXT_NOME", length = 100, nullable = false, unique = true)
     private String nome;
     
-    @NotBlank
-    @CPF
+    @NotBlank(message = "não pode estar vazio")
+    @CPF(message = "CPF Invalido")
     @Column(name = "TXT_CPF", nullable = false, unique = true)
     private String cpf;
     

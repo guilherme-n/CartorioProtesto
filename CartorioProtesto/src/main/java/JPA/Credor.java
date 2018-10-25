@@ -16,10 +16,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
@@ -55,13 +55,13 @@ public class Credor implements Serializable{
     private Long id;
     
     @NotBlank
-    @Size(max = 30)
-    @Pattern(regexp = "\\p{Upper}{1}\\p{Lower}+", message = "{JPA.Credor.senha}")
+    @Size(max = 100, message = "deve conter no maximo 100 caracteres")
+    @Pattern(regexp = "[A-Za-záàâãéèêíïóôõöúçÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9 ]*", message = "caracteres invalidos")
     @Column(name = "TXT_NOME", length = 100, nullable = false, unique = true)
     private String nome;
     
     @NotBlank
-    @CPF
+    @CPF(message = "CPF Invalido")
     @Column(name = "TXT_CPF")
     private String cpf;
     

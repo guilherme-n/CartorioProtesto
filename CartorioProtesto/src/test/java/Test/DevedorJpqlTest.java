@@ -66,7 +66,7 @@ public class DevedorJpqlTest extends TesteGenerico {
         List<Object[]> devedores = query.getResultList();
         assertEquals(3, devedores.size());
         assertEquals("Sandra de Sá", ((Devedor)devedores.get(0)[0]).getNome());
-        assertEquals(3, (long) (devedores.get(0)[1]), 0);
+        assertEquals(4, (long) (devedores.get(0)[1]), 0);
         assertEquals("Paulo Costa", ((Devedor)devedores.get(devedores.size()-1)[0]).getNome());
         assertEquals(2, (long) (devedores.get(devedores.size()-1)[1]), 0);
     }
